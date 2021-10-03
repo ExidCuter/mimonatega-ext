@@ -1,6 +1,6 @@
 # Mimonatega Extension
 
-This Firefox extension allows users to compare prices of items on web shop [https://www.mimovrste.com](https://www.mimovrste.com)
+This Firefox/Chrome extension allows users to compare prices of items on web shop [https://www.mimovrste.com](https://www.mimovrste.com)
 
 ## How to build and run
 
