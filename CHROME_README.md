@@ -4,6 +4,8 @@
 
 Google is charging for extension publishing so this extension is not provided via Google Web Store.
 
+[Download from Releases](https://github.com/ExidCuter/mimonatega-ext/releases)
+
 ### Installation
 
 1. Unzip the archive.
