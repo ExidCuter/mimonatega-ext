@@ -2,6 +2,10 @@
 
 This Firefox/Chrome extension allows users to compare prices of items on web shop [https://www.mimovrste.com](https://www.mimovrste.com)
 
+[Add to Firefox](https://addons.mozilla.org/en-US/firefox/addon/mimonatega-td-fl/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search
+
+[Add to Chrome](https://github.com/ExidCuter/mimonatega-ext/blob/main/CHROME_README.md)
+
 ## How to build and run
 
 This extension is written with help of React and is build with `npm`.
