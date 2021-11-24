@@ -11,10 +11,10 @@ import {
     Tooltip
 } from "@mui/material";
 
-function DetailsTable({item, isLoading, url, alert}) {
+function DetailsTable({item, prices, isLoading, url, alert}) {
     const calculateMax = () => {
         let max = 0;
-        item.prices.forEach(currPrice => {
+        prices.forEach(currPrice => {
             if (currPrice.price > max) {
                 max = currPrice.price;
             }
@@ -34,7 +34,7 @@ function DetailsTable({item, isLoading, url, alert}) {
     const calculateMin = () => {
         let min = calculateMax();
 
-        item.prices.forEach(currPrice => {
+        prices.forEach(currPrice => {
             if (currPrice.price < min) {
                 min = currPrice.price;
             }
@@ -52,9 +52,9 @@ function DetailsTable({item, isLoading, url, alert}) {
     }
 
     const getCurrentPrice = () => {
-        item.prices.sort((a, b) => (new Date(a.parsedAt) > new Date(b.parsedAt)) ? 1 : -1)
+        prices.sort((a, b) => (new Date(a.parsedAt) > new Date(b.parsedAt)) ? 1 : -1)
 
-        return item.prices[item.prices.length - 1].price;
+        return prices[prices.length - 1].price;
     }
 
     return (

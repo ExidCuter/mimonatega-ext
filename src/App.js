@@ -7,6 +7,7 @@ import Chart from "./components/Chart";
 
 function App() {
     const [item, setItem] = useState(null);
+    const [prices, setPrices] = useState([]);
     const [loading, setLoading] = useState(true);
     const [chartShown, setChartShown] = useState(false);
     const [isOnMimovrste, setOnMimovrste] = useState(false);
@@ -50,7 +51,11 @@ function App() {
                         setAlert(true);
                     } else {
                         setItem(res.data.data[0]);
-                        setLoading(false);
+                        axios.get(`https://api.mimonatega.td-fl.org/api/v1/items/prices/${res?.data?.data[0].id}`)
+                            .then(res => {
+                                setPrices(res.data.data)
+                                setLoading(false);
+                            })
                     }
                 })
                 .catch((e) => {
@@ -67,9 +72,9 @@ function App() {
             <Container maxWidth={"xs"} style={{padding: 0, width: 352}}>
                 {isOnMimovrste ? (
                     !chartShown ? (
-                        <DetailsTable item={item} isLoading={loading} url={url} alert={alert}/>
+                        <DetailsTable item={item} prices={prices} isLoading={loading} url={url} alert={alert}/>
                     ) : (
-                        <Chart prices={item.prices}/>
+                        <Chart prices={prices}/>
                     )
                 ) : (
                     <Alert severity="error">

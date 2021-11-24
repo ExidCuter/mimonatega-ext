@@ -1,7 +1,7 @@
 {
   "name": "Mimonatega",
   "description": "Check the current and past prices of products on Mimovrste",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "manifest_version": 3,
   "homepage_url": "https://beta.mimonatega.td-fl.org",
   "action": {
