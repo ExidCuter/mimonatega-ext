@@ -65,9 +65,9 @@ function DetailsTable({item, prices, isLoading, url, alert}) {
                         <TableRow>
                             <TableCell align={"center"} colSpan={2}>
                                 {isLoading ? (
-                                    <Skeleton variant="rectangular" animation="wave" width={"100%"} height={200}/>
+                                    <Skeleton variant="rectangular" animation="wave" width={"100%"} height={130}/>
                                 ) : (
-                                    <img src={item.image + "/350/350"} width={200} height={"auto"} alt={item.name} style={{marginTop: 10, marginBottom: 10}}/>
+                                    <img src={item.image + "/350/350"} alt={item.name} style={{marginTop: 10, marginBottom: 10, maxHeight: 130}}/>  // thenks klemn
                                 )}
 
                             </TableCell>
