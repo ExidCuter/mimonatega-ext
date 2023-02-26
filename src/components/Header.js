@@ -1,17 +1,19 @@
-import {AppBar, Badge, Button, Grid, Link, Skeleton, Toolbar, Typography} from "@mui/material";
+import {AppBar, Badge, Box, Button, Link, Stack, Toolbar, Typography, useMediaQuery} from "@mui/material";
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 function Header({onChartClicked, chartShown, isLoading}) {
+    const isDarkModeEnabled = useMediaQuery('(prefers-color-scheme: dark)');
+
     return (
         <header>
-            <AppBar position="static" style={{background: 'white', boxShadow: 'none'}}>
+            <AppBar position="static" style={{background: !isDarkModeEnabled ? 'white' : "#121212", boxShadow: 'none'}}>
                 <Toolbar>
-                    <Grid
-                        justify="space-between"
-                        container
-                        spacing={1}>
-                        <Grid item xs={9}>
+                    <Box sx={{width: "100%"}}>
+                        <Stack
+                            direction={"row"}
+                            justifyContent={"space-between"}
+                            spacing={1}>
                             <Badge
                                 color="secondary"
                                 anchorOrigin={{
@@ -24,21 +26,16 @@ function Header({onChartClicked, chartShown, isLoading}) {
                                     MIMONATEGA
                                 </Typography>
                             </Badge>
-                        </Grid>
-                        <Grid item xs={3}>
-                            {isLoading ? (
-                                <></>
-                            ) : (
-                                <Button fullWidth color={"secondary"} variant="outlined" onClick={onChartClicked}>
-                                    {chartShown ? (
-                                        <InfoOutlinedIcon/>
-                                    ) : (
-                                        <ShowChartIcon/>
-                                    )}
-                                </Button>
-                            )}
-                        </Grid>
-                    </Grid>
+
+                            <Button color={"secondary"} variant="outlined" onClick={onChartClicked}>
+                                {chartShown ? (
+                                    <InfoOutlinedIcon/>
+                                ) : (
+                                    <ShowChartIcon/>
+                                )}
+                            </Button>
+                        </Stack>
+                    </Box>
                 </Toolbar>
             </AppBar>
         </header>

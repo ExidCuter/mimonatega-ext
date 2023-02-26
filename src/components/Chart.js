@@ -1,7 +1,8 @@
 import {ResponsiveLine} from "@nivo/line";
-import {Paper} from "@mui/material";
+import {Box, Paper, useMediaQuery} from "@mui/material";
 
 function Chart({prices}) {
+    const isDarkModeEnabled = useMediaQuery('(prefers-color-scheme: dark)');
 
     const calculateMax = () => {
         let max = 0;
@@ -77,10 +78,86 @@ function Chart({prices}) {
     }
 
     return (
-        <Paper style={{height: 430, marginTop: 10, marginRight: 0}} variant={"outlined"}>
+        <Box style={{height: 430, marginRight: 0}}>
             <ResponsiveLine
+                theme={isDarkModeEnabled ? {
+                    "textColor": "#ffffff",
+                    "fontSize": 11,
+                    "axis": {
+                        "domain": {
+                            "line": {
+                                "stroke": "#ffffff",
+                            }
+                        },
+                        "legend": {
+                            "text": {
+                                "fill": "#ffffff"
+                            }
+                        },
+                        "ticks": {
+                            "text": {
+                                "fill": "#bdbdbd"
+                            }
+                        }
+                    },
+                    "grid": {
+                        "line": {
+                            "stroke": "#bdbdbd",
+                        }
+                    },
+                    "legends": {
+                        "title": {
+                            "text": {
+                                "fill": "#ffffff"
+                            }
+                        },
+                        "text": {
+                            "fill": "#ffffff"
+                        },
+                        "ticks": {
+                            "text": {
+                                "fill": "#ffffff"
+                            }
+                        }
+                    },
+                    "annotations": {
+                        "text": {
+                            "fontSize": 13,
+                            "fill": "#333333",
+                            "outlineWidth": 2,
+                            "outlineColor": "#ffffff",
+                            "outlineOpacity": 1
+                        },
+                        "link": {
+                            "stroke": "#000000",
+                            "strokeWidth": 1,
+                            "outlineWidth": 2,
+                            "outlineColor": "#ffffff",
+                            "outlineOpacity": 1
+                        },
+                        "outline": {
+                            "stroke": "#000000",
+                            "strokeWidth": 2,
+                            "outlineWidth": 2,
+                            "outlineColor": "#ffffff",
+                            "outlineOpacity": 1
+                        },
+                        "symbol": {
+                            "fill": "#000000",
+                            "outlineWidth": 2,
+                            "outlineColor": "#ffffff",
+                            "outlineOpacity": 1
+                        }
+                    },
+                    "tooltip": {
+                        "container": {
+                            "background": "#484848",
+                            "color": "#ffffff",
+                        },
+                    }
+                }: {}}
                 data={transformPricesToData()}
-                margin={{top: 50, right: 40, bottom: 80, left: 70}}
+                margin={{top: 0, right: 40, bottom: 80, left: 70}}
                 colors={{scheme: 'category10'}}
                 xScale={{
                     type: "time",
@@ -132,7 +209,7 @@ function Chart({prices}) {
                     }
                 ]}
             />
-        </Paper>
+        </Box>
     );
 }
 
