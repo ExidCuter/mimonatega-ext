@@ -54,7 +54,7 @@ function DetailsTable({item, prices, isLoading, url, alert}) {
     const getCurrentPrice = () => {
         prices.sort((a, b) => (new Date(a.parsedAt) > new Date(b.parsedAt)) ? 1 : -1)
 
-        return prices[prices.length - 1].price;
+        return prices?.at(-1)?.price || 0;
     }
 
     return (
